@@ -1,0 +1,72 @@
+<CardUIWindow>:
+    orientation: "vertical"
+    spacing: 10
+
+#： 标题
+    BoxLayout:
+        size_hint_y: None
+        height: 50
+        Label:
+            text: "AiTC智能发卡系统"
+            font_name: "Font_Hanzi"
+            bold: True
+            size_hint_x: .9
+
+        Button:
+            text: "x"
+            size_hint_x: .1
+
+#： 发卡数监控
+    GridLayout:
+        cols: 2
+        Label:
+            text: "初始卡数: "
+            font_name: "Font_Hanzi"
+        TextInput:
+            hint_text: "请输入初始卡数"
+            font_name: "Font_Hanzi"
+            multiline: False
+        Label:
+            text: "已发卡数: "
+            font_name: "Font_Hanzi"
+        TextInput:
+            multiline: False
+            readonly: True
+        Label:
+            text: "回收卡数: "
+            font_name: "Font_Hanzi"
+        TextInput:
+            multiline: False
+            readonly: True
+        Label:
+            text: "剩余卡数: "
+            font_name: "Font_Hanzi"
+        TextInput:
+            multiline: False
+            readonly: True
+
+#： 车型车牌显示
+    GridLayout:
+        cols: 2
+        Label:
+            text: "车型: "
+            font_name: "Font_Hanzi"
+        TextInput:
+            hint_text: "车型："
+            font_name: "Font_Hanzi"
+            multiline: False
+        Label:
+            text: "车型: "
+            font_name: "Font_Hanzi"
+        TextInput:
+            hint_text: "请输入零牌："
+            font_name: "Font_Hanzi"
+            multiline: False
+
+#： 流程状态显示
+    BoxLayout:
+        TextInput:
+            hint_text: "流程状态"
+            font_name: "Font_Hanzi"
+
+
