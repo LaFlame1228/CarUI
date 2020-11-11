@@ -1,72 +1,235 @@
+<FlatButton@ButtonBehavior+Label>:
+    font_size: 16
+
+
 <CardUIWindow>:
+    id: main_window
     orientation: "vertical"
     spacing: 10
+    space_x: self.size[0]/2
+    canvas.before:
+        Color:
+            rgba: (1,1,1,1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
 
 #： 标题
     BoxLayout:
         size_hint_y: None
         height: 50
+        canvas.before:
+            Color:
+                rgba: (.06,.45,.45,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
         Label:
             text: "AiTC智能发卡系统"
             font_name: "Font_Hanzi"
             bold: True
             size_hint_x: .9
 
-        Button:
+        FlatButton:
             text: "x"
             size_hint_x: .1
 
-#： 发卡数监控
     GridLayout:
         cols: 2
-        Label:
-            text: "初始卡数: "
-            font_name: "Font_Hanzi"
-        TextInput:
-            hint_text: "请输入初始卡数"
-            font_name: "Font_Hanzi"
-            multiline: False
-        Label:
-            text: "已发卡数: "
-            font_name: "Font_Hanzi"
-        TextInput:
-            multiline: False
-            readonly: True
-        Label:
-            text: "回收卡数: "
-            font_name: "Font_Hanzi"
-        TextInput:
-            multiline: False
-            readonly: True
-        Label:
-            text: "剩余卡数: "
-            font_name: "Font_Hanzi"
-        TextInput:
-            multiline: False
-            readonly: True
 
-#： 车型车牌显示
-    GridLayout:
-        cols: 2
-        Label:
-            text: "车型: "
-            font_name: "Font_Hanzi"
-        TextInput:
-            hint_text: "车型："
-            font_name: "Font_Hanzi"
-            multiline: False
-        Label:
-            text: "车型: "
-            font_name: "Font_Hanzi"
-        TextInput:
-            hint_text: "请输入零牌："
-            font_name: "Font_Hanzi"
-            multiline: False
+    #左半模块
+        BoxLayout:
+            orientation: "vertical"
+            GridLayout:
+                spacing: 2
+                cols: 2
+                Label:
+                    canvas.before:
+                        Color:
+                            rgba: (.1,.45,.45,1)
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    text: "PLC模块状态"
+                    font_name: "Font_Hanzi"
+                Label:
+                    canvas.before:
+                        Color:
+                            rgba: (.1,.45,.45,1)
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    text: "车型模块状态"
+                    font_name: "Font_Hanzi"
+                Label:
+                    canvas.before:
+                        Color:
+                            rgba: (.1,.45,.45,1)
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    text: "车牌模块状态"
+                    font_name: "Font_Hanzi"
+                Label:
+                    canvas.before:
+                        Color:
+                            rgba: (.1,.45,.45,1)
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    text: "机器人模块状态"
+                    font_name: "Font_Hanzi"
+                Label:
+                    canvas.before:
+                        Color:
+                            rgba: (.1,.45,.45,1)
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    text: "地感线圈状态"
+                    font_name: "Font_Hanzi"
+                Label:
+                    id:wave
+                    canvas.before:
+                        Color:
+                            rgba: (.1,.45,.45,1)
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    text: "超声波数值"
+                    font_name: "Font_Hanzi"
+                    TextInput:
+                        multiline: False
+                        readonly: True
+                        pos: wave.center_x-50,wave.center_y-50
+                        size: 100,30
+                Label:
+                    canvas.before:
+                        Color:
+                            rgba: (.1,.45,.45,1)
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    text: "车停状态"
+                    font_name: "Font_Hanzi"
+                Label:
+                    canvas.before:
+                        Color:
+                            rgba: (.1,.45,.45,1)
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    text: "补光灯状态"
+                    font_name: "Font_Hanzi"
 
-#： 流程状态显示
-    BoxLayout:
-        TextInput:
-            hint_text: "流程状态"
-            font_name: "Font_Hanzi"
+            Button:
+                text: "复位"
+                font_name: "Font_Hanzi"
+                size_hint_y: None
+                height: 40
+
+
+
+
+
+    #右半模块
+        BoxLayout:
+            orientation: "vertical"
+            padding: 10, 0, 0, 0
+
+        #： 发卡数监控
+            GridLayout:
+                cols: 2
+                spacing: 2
+                Label:
+                    canvas.before:
+                        Color:
+                            rgba: (.06,.45,.45,1)
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    text: "初始卡数: "
+                    font_name: "Font_Hanzi"
+                TextInput:
+                    hint_text: "请输入初始卡数"
+                    font_name: "Font_Hanzi"
+                    multiline: False
+                    focus: True
+                Label:
+                    canvas.before:
+                        Color:
+                            rgba: (.06,.45,.45,1)
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    text: "已发卡数: "
+                    font_name: "Font_Hanzi"
+                TextInput:
+                    multiline: False
+                    readonly: True
+                Label:
+                    canvas.before:
+                        Color:
+                            rgba: (.06,.45,.45,1)
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    text: "回收卡数: "
+                    font_name: "Font_Hanzi"
+                TextInput:
+                    multiline: False
+                    readonly: True
+                Label:
+                    canvas.before:
+                        Color:
+                            rgba: (.06,.45,.45,1)
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    text: "剩余卡数: "
+                    font_name: "Font_Hanzi"
+                TextInput:
+                    multiline: False
+                    readonly: True
+                Label:
+                    id:sp
+                    size_hint_y: None
+                    height: 5
+        #： 车型车牌显示
+            GridLayout:
+                spacing: 2
+                cols: 2
+                Label:
+                    canvas.before:
+                        Color:
+                            rgba: (.06,.45,.45,1)
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    text: "车型: "
+                    font_name: "Font_Hanzi"
+                TextInput:
+                    hint_text: "车型："
+                    font_name: "Font_Hanzi"
+                    multiline: False
+                Label:
+                    canvas.before:
+                        Color:
+                            rgba: (.06,.45,.45,1)
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    text: "车型: "
+                    font_name: "Font_Hanzi"
+                TextInput:
+                    hint_text: "请输入零牌："
+                    font_name: "Font_Hanzi"
+                    multiline: False
+
+        #： 流程状态显示
+            BoxLayout:
+                TextInput:
+                    hint_text: "流程状态"
+                    font_name: "Font_Hanzi"
 
 

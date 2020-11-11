@@ -7,7 +7,9 @@ from kivy.core.text import LabelBase
 LabelBase.register(name='Font_Hanzi',fn_regular="mysh.ttf")
 
 class CardUIWindow(BoxLayout):
-    pass
+    # def __init__(self, **kwargs):
+    #     super().__init__(**kwargs)
+        pass
 
 class CardUIApp(App):
 
