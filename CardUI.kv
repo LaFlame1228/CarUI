@@ -42,7 +42,7 @@
             orientation: "vertical"
             GridLayout:
                 spacing: 2
-                cols: 2
+                cols: 4
                 Label:
                     canvas.before:
                         Color:
@@ -52,6 +52,15 @@
                             pos: self.pos
                     text: "PLC模块状态"
                     font_name: "Font_Hanzi"
+                RelativeLayout:
+                    canvas:
+                        Color:
+                            rgba: 0,1,0,1
+                        Ellipse:
+                            angle_start: 0
+                            angle_end: 360
+                            pos: 0,0
+                            size: 50, 50
                 Label:
                     canvas.before:
                         Color:
@@ -61,6 +70,15 @@
                             pos: self.pos
                     text: "车型模块状态"
                     font_name: "Font_Hanzi"
+                RelativeLayout:
+                    canvas:
+                        Color:
+                            rgba: 0,1,0,1
+                        Ellipse:
+                            angle_start: 0
+                            angle_end: 360
+                            pos: 0,0
+                            size: 50, 50
                 Label:
                     canvas.before:
                         Color:
@@ -70,6 +88,15 @@
                             pos: self.pos
                     text: "车牌模块状态"
                     font_name: "Font_Hanzi"
+                RelativeLayout:
+                    canvas:
+                        Color:
+                            rgba: 0,1,0,1
+                        Ellipse:
+                            angle_start: 0
+                            angle_end: 360
+                            pos: 0,0
+                            size: 50, 50
                 Label:
                     canvas.before:
                         Color:
@@ -79,6 +106,15 @@
                             pos: self.pos
                     text: "机器人模块状态"
                     font_name: "Font_Hanzi"
+                RelativeLayout:
+                    canvas:
+                        Color:
+                            rgba: 0,1,0,1
+                        Ellipse:
+                            angle_start: 0
+                            angle_end: 360
+                            pos: 0,0
+                            size: 50, 50
                 Label:
                     canvas.before:
                         Color:
@@ -88,6 +124,15 @@
                             pos: self.pos
                     text: "地感线圈状态"
                     font_name: "Font_Hanzi"
+                RelativeLayout:
+                    canvas:
+                        Color:
+                            rgba: 0,1,0,1
+                        Ellipse:
+                            angle_start: 0
+                            angle_end: 360
+                            pos: 0,0
+                            size: 50, 50
                 Label:
                     id:wave
                     canvas.before:
@@ -103,6 +148,15 @@
                         readonly: True
                         pos: wave.center_x-50,wave.center_y-50
                         size: 100,30
+                RelativeLayout:
+                    canvas:
+                        Color:
+                            rgba: 0,1,0,1
+                        Ellipse:
+                            angle_start: 0
+                            angle_end: 360
+                            pos: 0,0
+                            size: 50, 50
                 Label:
                     canvas.before:
                         Color:
@@ -112,6 +166,15 @@
                             pos: self.pos
                     text: "车停状态"
                     font_name: "Font_Hanzi"
+                RelativeLayout:
+                    canvas:
+                        Color:
+                            rgba: 0,1,0,1
+                        Ellipse:
+                            angle_start: 0
+                            angle_end: 360
+                            pos: 0,0
+                            size: 50, 50
                 Label:
                     canvas.before:
                         Color:
@@ -121,6 +184,15 @@
                             pos: self.pos
                     text: "补光灯状态"
                     font_name: "Font_Hanzi"
+                RelativeLayout:
+                    canvas:
+                        Color:
+                            rgba: 0,1,0,1
+                        Ellipse:
+                            angle_start: 0
+                            angle_end: 360
+                            pos: 0,0
+                            size: 50, 50
 
             Button:
                 text: "复位"
@@ -219,10 +291,10 @@
                         Rectangle:
                             size: self.size
                             pos: self.pos
-                    text: "车型: "
+                    text: "车牌： "
                     font_name: "Font_Hanzi"
                 TextInput:
-                    hint_text: "请输入零牌："
+                    hint_text: "请输入临牌："
                     font_name: "Font_Hanzi"
                     multiline: False
 
