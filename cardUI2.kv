@@ -1,0 +1,91 @@
+<FlatButton@ButtonBehavior+Label>:
+    font_size: 16
+
+
+<CardUIWindow>:
+    id: top_title
+    orientation: "vertical"
+    spacing: 10
+    space_x: self.size[0]/2
+
+
+#： 标题
+    BoxLayout:
+        size: root.width, 50
+        pos: self.x, root.top-50
+
+        canvas.before:
+            Color:
+                rgba: (238/255.0,118/255.0,0/255.0,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Label:
+            text: "AiTC智能发卡系统"
+            font_name: "Font_Hanzi"
+            bold: True
+            size_hint_x: .9
+        FlatButton:
+            text: "x"
+            size_hint_x: .1
+
+<CardNumber>:
+
+    #： 发卡数监控
+    GridLayout:
+        cols: 2
+        spacing: 2
+        size:root.width/2, root.height/3
+        pos: self.x, root.top-100
+        Label:
+            canvas.before:
+                Color:
+                    rgba: (238/255.0,118/255.0,0/255.0,1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            text: "初始卡数: "
+            font_name: "Font_Hanzi"
+        TextInput:
+            hint_text: "请输入初始卡数"
+            font_name: "Font_Hanzi"
+            multiline: False
+            focus: True
+        Label:
+            canvas.before:
+                Color:
+                    rgba: (238/255.0,118/255.0,0/255.0,1)
+
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            text: "已发卡数: "
+            font_name: "Font_Hanzi"
+        TextInput:
+            multiline: False
+            readonly: True
+        Label:
+            canvas.before:
+                Color:
+                    rgba: (238/255.0,118/255.0,0/255.0,1)
+
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            text: "回收卡数: "
+            font_name: "Font_Hanzi"
+        TextInput:
+            multiline: False
+            readonly: True
+        Label:
+            canvas.before:
+                Color:
+                    rgba: (238/255.0,118/255.0,0/255.0,1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            text: "剩余卡数: "
+            font_name: "Font_Hanzi"
+        TextInput:
+            multiline: False
+
