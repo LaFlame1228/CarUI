@@ -3,17 +3,21 @@
 
 
 <CardUIWindow>:
-    id: top_title
+    id: main_window
     orientation: "vertical"
     spacing: 10
     space_x: self.size[0]/2
-
+    canvas.before:
+        Color:
+            rgba: (1,1,1,1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
 
 #： 标题
     BoxLayout:
-        size: root.width, 50
-        pos: self.x, root.top-50
-
+        size_hint_y: None
+        height: 50
         canvas.before:
             Color:
                 rgba: (238/255.0,118/255.0,0/255.0,1)
@@ -25,67 +29,258 @@
             font_name: "Font_Hanzi"
             bold: True
             size_hint_x: .9
+
         FlatButton:
             text: "x"
             size_hint_x: .1
 
-<CardNumber>:
-
-    #： 发卡数监控
     GridLayout:
         cols: 2
-        spacing: 2
-        size:root.width/2, root.height/3
-        pos: self.x, root.top-100
-        Label:
-            canvas.before:
-                Color:
-                    rgba: (238/255.0,118/255.0,0/255.0,1)
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
-            text: "初始卡数: "
-            font_name: "Font_Hanzi"
-        TextInput:
-            hint_text: "请输入初始卡数"
-            font_name: "Font_Hanzi"
-            multiline: False
-            focus: True
-        Label:
-            canvas.before:
-                Color:
-                    rgba: (238/255.0,118/255.0,0/255.0,1)
 
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
-            text: "已发卡数: "
-            font_name: "Font_Hanzi"
+    #左半模块
+        BoxLayout:
+            orientation: "vertical"
+            StatusBar:
+                center: self.parent.center
+
+            Button:
+                text: "复位"
+                font_name: "Font_Hanzi"
+                size_hint_y: None
+                height: 40
+
+
+
+
+
+    #右半模块
+        BoxLayout:
+            id: right_layout
+            orientation: "vertical"
+            padding: 10, 0, 0, 0
+
+            #发卡信息
+            CardNumber:
+                center: self.parent.center
+            #车型车牌显示
+            PlateNumber:
+                center: self.parent.center
+            #流程状态显示
+            LogText:
+                center: self.parent.center
+
+
+
+<CardNumber>:
+    init_card: init_card
+    sent_card: sent_card
+    recycled_card: recycled_card
+    remaining_card: remaining_card
+
+    cols: 2
+    spacing: 2
+    Label:
+        canvas.before:
+            Color:
+                rgba: (238/255.0,118/255.0,0/255.0,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: "初始卡数: "
+        font_name: "Font_Hanzi"
+    TextInput:
+        id:init_card
+        hint_text: "请输入初始卡数"
+        font_name: "Font_Hanzi"
+        multiline: False
+        focus: True
+        input_filter: 'int'
+    Label:
+        canvas.before:
+            Color:
+                rgba: (238/255.0,118/255.0,0/255.0,1)
+
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: "已发卡数: "
+        font_name: "Font_Hanzi"
+    TextInput:
+        id: sent_card
+        text:'0'
+        multiline: False
+        readonly: True
+    Label:
+        canvas.before:
+            Color:
+                rgba: (238/255.0,118/255.0,0/255.0,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: "回收卡数: "
+        font_name: "Font_Hanzi"
+    TextInput:
+        id: recycled_card
+        text:'0'
+        multiline: False
+        readonly: True
+    Label:
+        canvas.before:
+            Color:
+                rgba: (238/255.0,118/255.0,0/255.0,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: "剩余卡数: "
+        font_name: "Font_Hanzi"
+    TextInput:
+        id: remaining_card
+        text:'0'
+        multiline: False
+        readonly: True
+    Button:
+        text: "Send"
+        on_press: root.btn_send()
+        on_release: root.release()
+    Button:
+        text: "Recycle"
+        on_press: root.btn_recycle()
+        on_release: root.release()
+    Label:
+        id:sp
+        size_hint_y: None
+        height: 5
+
+<PlateNumber>:
+    spacing: 2
+    cols: 2
+    Label:
+        canvas.before:
+            Color:
+                rgba: (238/255.0,118/255.0,0/255.0,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: "车型: "
+        font_name: "Font_Hanzi"
+    TextInput:
+        hint_text: "车型："
+        font_name: "Font_Hanzi"
+        multiline: False
+    Label:
+        canvas.before:
+            Color:
+                rgba: (238/255.0,118/255.0,0/255.0,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: "车牌： "
+        font_name: "Font_Hanzi"
+    TextInput:
+        hint_text: "请输入临牌："
+        font_name: "Font_Hanzi"
+        multiline: False
+
+<LogText>:
+    TextInput:
+        hint_text: "流程状态"
+        font_name: "Font_Hanzi"
+
+<StatusBar>:
+    spacing: 2
+    cols: 4
+    Label:
+        canvas.before:
+            Color:
+                rgba: (238/255.0,118/255.0,0/255.0,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: "PLC模块状态"
+        font_name: "Font_Hanzi"
+    TextInput:
+        readonly: True
+
+    Label:
+        canvas.before:
+            Color:
+                rgba: (238/255.0,118/255.0,0/255.0,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: "车型模块状态"
+        font_name: "Font_Hanzi"
+    TextInput:
+        readonly: True
+    Label:
+        canvas.before:
+            Color:
+                rgba: (238/255.0,118/255.0,0/255.0,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: "车牌模块状态"
+        font_name: "Font_Hanzi"
+    TextInput:
+        readonly: True
+    Label:
+        canvas.before:
+            Color:
+                rgba: (238/255.0,118/255.0,0/255.0,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: "机器人模块状态"
+        font_name: "Font_Hanzi"
+    TextInput:
+        readonly: True
+    Label:
+        canvas.before:
+            Color:
+                rgba: (238/255.0,118/255.0,0/255.0,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: "地感线圈状态"
+        font_name: "Font_Hanzi"
+    TextInput:
+        readonly: True
+    Label:
+        id:wave
+        canvas.before:
+            Color:
+                rgba: (238/255.0,118/255.0,0/255.0,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: "超声波数值"
+        font_name: "Font_Hanzi"
         TextInput:
             multiline: False
             readonly: True
-        Label:
-            canvas.before:
-                Color:
-                    rgba: (238/255.0,118/255.0,0/255.0,1)
-
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
-            text: "回收卡数: "
-            font_name: "Font_Hanzi"
-        TextInput:
-            multiline: False
-            readonly: True
-        Label:
-            canvas.before:
-                Color:
-                    rgba: (238/255.0,118/255.0,0/255.0,1)
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
-            text: "剩余卡数: "
-            font_name: "Font_Hanzi"
-        TextInput:
-            multiline: False
-
+            pos: wave.center_x-50,wave.center_y-50
+            size: 100,30
+    TextInput:
+        readonly: True
+    Label:
+        canvas.before:
+            Color:
+                rgba: (238/255.0,118/255.0,0/255.0,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: "车停状态"
+        font_name: "Font_Hanzi"
+    TextInput:
+        readonly: True
+    Label:
+        canvas.before:
+            Color:
+                rgba: (238/255.0,118/255.0,0/255.0,1)
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        text: "补光灯状态"
+        font_name: "Font_Hanzi"
+    TextInput:
+        readonly: True
