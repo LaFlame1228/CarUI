@@ -3,7 +3,7 @@
 
 
 <CardUIWindow>:
-    id: main_window
+
     orientation: "vertical"
     spacing: 10
     space_x: self.size[0]/2
@@ -28,20 +28,17 @@
             text: "AiTC智能发卡系统"
             font_name: "Font_Hanzi"
             bold: True
-            size_hint_x: .9
 
-        FlatButton:
-            text: "x"
-            size_hint_x: .1
 
     GridLayout:
         cols: 2
-
     #左半模块
         BoxLayout:
+            id: Left
             orientation: "vertical"
             StatusBar:
                 center: self.parent.center
+
 
             Button:
                 text: "复位"
@@ -182,9 +179,11 @@
         multiline: False
 
 <LogText>:
+
     TextInput:
         hint_text: "流程状态"
         font_name: "Font_Hanzi"
+
 
 <StatusBar>:
     spacing: 2
@@ -198,31 +197,35 @@
                 pos: self.pos
         text: "PLC模块状态"
         font_name: "Font_Hanzi"
-    TextInput:
-        readonly: True
+    BoxLayout:
+        orientation: "vertical"
+        TextInput:
+            readonly: True
+            text: "地感线圈"
+            font_name: "Font_Hanzi"
+            background_color: (0/255.0,255/255.0,127/255.0,1)
+        TextInput:
+            readonly: True
+            text: "车停状态"
+            font_name: "Font_Hanzi"
+            background_color: (238/255.0,44/255.0,44/255.0,1)
+        TextInput:
+            readonly: True
+            text: "PLC链接状态"
+            font_name: "Font_Hanzi"
+            background_color: (0/255.0,255/255.0,127/255.0,1)
+        Label:
+            canvas.before:
+                Color:
+                    rgba: (238/255.0,118/255.0,0/255.0,1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            text: "超声波数值"
+            font_name: "Font_Hanzi"
+        TextInput:
+            readonly: True
 
-    Label:
-        canvas.before:
-            Color:
-                rgba: (238/255.0,118/255.0,0/255.0,1)
-            Rectangle:
-                size: self.size
-                pos: self.pos
-        text: "车型模块状态"
-        font_name: "Font_Hanzi"
-    TextInput:
-        readonly: True
-    Label:
-        canvas.before:
-            Color:
-                rgba: (238/255.0,118/255.0,0/255.0,1)
-            Rectangle:
-                size: self.size
-                pos: self.pos
-        text: "车牌模块状态"
-        font_name: "Font_Hanzi"
-    TextInput:
-        readonly: True
     Label:
         canvas.before:
             Color:
@@ -232,36 +235,40 @@
                 pos: self.pos
         text: "机器人模块状态"
         font_name: "Font_Hanzi"
-    TextInput:
-        readonly: True
-    Label:
-        canvas.before:
-            Color:
-                rgba: (238/255.0,118/255.0,0/255.0,1)
-            Rectangle:
-                size: self.size
-                pos: self.pos
-        text: "地感线圈状态"
-        font_name: "Font_Hanzi"
-    TextInput:
-        readonly: True
-    Label:
-        id:wave
-        canvas.before:
-            Color:
-                rgba: (238/255.0,118/255.0,0/255.0,1)
-            Rectangle:
-                size: self.size
-                pos: self.pos
-        text: "超声波数值"
-        font_name: "Font_Hanzi"
+    BoxLayout:
+        orientation: "vertical"
         TextInput:
-            multiline: False
             readonly: True
-            pos: wave.center_x-50,wave.center_y-50
-            size: 100,30
-    TextInput:
-        readonly: True
+            text: "机器人自动运行中"
+            font_name: "Font_Hanzi"
+            background_color: (0/255.0,255/255.0,127/255.0,1)
+        GridLayout:
+            cols:2
+            Label:
+                canvas.before:
+                    Color:
+                        rgba: (238/255.0,118/255.0,0/255.0,1)
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                text: "取卡位："
+                font_name: "Font_Hanzi"
+            TextInput:
+                readonly: True
+                text: "1/2/3/4"
+        TextInput:
+            readonly: True
+            text: "机器人有卡"
+            font_name: "Font_Hanzi"
+            background_color: (0/255.0,255/255.0,127/255.0,1)
+        TextInput:
+            readonly: True
+            text: "机器人报警"
+            font_name: "Font_Hanzi"
+            background_color: (0/255.0,255/255.0,127/255.0,1)
+
+
+
     Label:
         canvas.before:
             Color:
@@ -269,10 +276,30 @@
             Rectangle:
                 size: self.size
                 pos: self.pos
-        text: "车停状态"
+        text: "车型车牌模块状态"
         font_name: "Font_Hanzi"
-    TextInput:
-        readonly: True
+    BoxLayout:
+        orientation: "vertical"
+        TextInput:
+            readonly: True
+            text: "微波"
+            font_name: "Font_Hanzi"
+            background_color: (0/255.0,255/255.0,127/255.0,1)
+        TextInput:
+            readonly: True
+            text: "补光灯"
+            font_name: "Font_Hanzi"
+            background_color: (238/255.0,44/255.0,44/255.0,1)
+        TextInput:
+            readonly: True
+            text: "相机运行状态"
+            font_name: "Font_Hanzi"
+            background_color: (0/255.0,255/255.0,127/255.0,1)
+        TextInput:
+            readonly: True
+            text: "车牌系统"
+            font_name: "Font_Hanzi"
+            background_color: (0/255.0,255/255.0,127/255.0,1)
     Label:
         canvas.before:
             Color:
@@ -280,7 +307,33 @@
             Rectangle:
                 size: self.size
                 pos: self.pos
-        text: "补光灯状态"
+        text: "车窗定位模块状态"
         font_name: "Font_Hanzi"
-    TextInput:
-        readonly: True
+    BoxLayout:
+        orientation: "vertical"
+        TextInput:
+            readonly: True
+            text: "上相机运行"
+            font_name: "Font_Hanzi"
+            background_color: (0/255.0,255/255.0,127/255.0,1)
+        TextInput:
+            readonly: True
+            text: "下相机运行"
+            font_name: "Font_Hanzi"
+            background_color: (238/255.0,44/255.0,44/255.0,1)
+        Label:
+            canvas.before:
+                Color:
+                    rgba: (238/255.0,118/255.0,0/255.0,1)
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            text: "车窗坐标"
+            font_name: "Font_Hanzi"
+        TextInput:
+            readonly: True
+            text: "(x,y,z)"
+
+<Camera>:
+    source: 'logo.png'
+
