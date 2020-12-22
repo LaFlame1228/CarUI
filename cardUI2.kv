@@ -179,19 +179,45 @@
         multiline: False
 
 <LogText>:
+    logText: logText
 
     TextInput:
+        id:logText
         hint_text: "流程状态"
         font_name: "Font_Hanzi"
 
 
+
 <StatusBar>:
+
+    plc_module: plc_module
+    robot_module: robot_module
+    car_type_module: car_type_module
+    car_window_module: car_window_module
+    ground_sense: ground_sense
+    car_stop: car_stop
+    plc_connect: plc_connect
+    ultrasonic: ultrasonic
+    robot_running: robot_running
+    card_position: card_position
+    card_remain: card_remain
+    robot_alarm: robot_alarm
+    micro_wave: micro_wave
+    fill_light: fill_light
+    camera_running: camera_running
+    plate_system: plate_system
+    up_camera: up_camera
+    down_camera: down_camera
+    window_position: window_position
+
     spacing: 2
     cols: 4
     Label:
+        id:plc_module
+        col: (238/255.0,118/255.0,0/255.0,1)
         canvas.before:
             Color:
-                rgba: (238/255.0,118/255.0,0/255.0,1)
+                rgba: self.col
             Rectangle:
                 size: self.size
                 pos: self.pos
@@ -200,16 +226,19 @@
     BoxLayout:
         orientation: "vertical"
         TextInput:
+            id: ground_sense
             readonly: True
             text: "地感线圈"
             font_name: "Font_Hanzi"
             background_color: (0/255.0,255/255.0,127/255.0,1)
         TextInput:
+            id: car_stop
             readonly: True
             text: "车停状态"
             font_name: "Font_Hanzi"
             background_color: (238/255.0,44/255.0,44/255.0,1)
         TextInput:
+            id: plc_connect
             readonly: True
             text: "PLC链接状态"
             font_name: "Font_Hanzi"
@@ -224,9 +253,14 @@
             text: "超声波数值"
             font_name: "Font_Hanzi"
         TextInput:
+            id: ultrasonic
             readonly: True
+        Button:
+            text: "color"
+            on_press: root.btn()
 
     Label:
+        id: robot_module
         canvas.before:
             Color:
                 rgba: (238/255.0,118/255.0,0/255.0,1)
@@ -238,6 +272,7 @@
     BoxLayout:
         orientation: "vertical"
         TextInput:
+            id: robot_running
             readonly: True
             text: "机器人自动运行中"
             font_name: "Font_Hanzi"
@@ -254,14 +289,17 @@
                 text: "取卡位："
                 font_name: "Font_Hanzi"
             TextInput:
+                id: card_position
                 readonly: True
                 text: "1/2/3/4"
         TextInput:
+            id: card_remain
             readonly: True
             text: "机器人有卡"
             font_name: "Font_Hanzi"
             background_color: (0/255.0,255/255.0,127/255.0,1)
         TextInput:
+            id: robot_alarm
             readonly: True
             text: "机器人报警"
             font_name: "Font_Hanzi"
@@ -270,6 +308,7 @@
 
 
     Label:
+        id: car_type_module
         canvas.before:
             Color:
                 rgba: (238/255.0,118/255.0,0/255.0,1)
@@ -281,26 +320,31 @@
     BoxLayout:
         orientation: "vertical"
         TextInput:
+            id: micro_wave
             readonly: True
             text: "微波"
             font_name: "Font_Hanzi"
             background_color: (0/255.0,255/255.0,127/255.0,1)
         TextInput:
+            id: fill_light
             readonly: True
             text: "补光灯"
             font_name: "Font_Hanzi"
             background_color: (238/255.0,44/255.0,44/255.0,1)
         TextInput:
+            id: camera_running
             readonly: True
             text: "相机运行状态"
             font_name: "Font_Hanzi"
             background_color: (0/255.0,255/255.0,127/255.0,1)
         TextInput:
+            id: plate_system
             readonly: True
             text: "车牌系统"
             font_name: "Font_Hanzi"
             background_color: (0/255.0,255/255.0,127/255.0,1)
     Label:
+        id: car_window_module
         canvas.before:
             Color:
                 rgba: (238/255.0,118/255.0,0/255.0,1)
@@ -312,11 +356,13 @@
     BoxLayout:
         orientation: "vertical"
         TextInput:
+            id: up_camera
             readonly: True
             text: "上相机运行"
             font_name: "Font_Hanzi"
             background_color: (0/255.0,255/255.0,127/255.0,1)
         TextInput:
+            id: down_camera
             readonly: True
             text: "下相机运行"
             font_name: "Font_Hanzi"
@@ -331,6 +377,7 @@
             text: "车窗坐标"
             font_name: "Font_Hanzi"
         TextInput:
+            id: window_position
             readonly: True
             text: "(x,y,z)"
 
